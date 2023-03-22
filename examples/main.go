@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"six-data-chain-go-sdk/api"
+	// "six-data-chain-go-sdk/api"
 
-	// "github.com/thesixnetwork/six-data-chain-go-sdk/api"
+	"github.com/thesixnetwork/six-data-chain-go-sdk/api"
 
 	"github.com/google/uuid"
 	nftmngrtypes "github.com/thesixnetwork/sixnft/x/nftmngr/types"
@@ -18,12 +18,11 @@ YOUR KEY DETAIL
 -----END TENDERMINT PRIVATE KEY-----
 	`
 	passphrase := "YOUR PASSPHARSE"
-	importAccountName := "YOUR ACCOUNT NAME"
 	chainID := "YOUR CHAIN ID"
 
 	// Create a new API client
 	gasPrice := "1.25usix" // default "1.25usix"
-	clientOptions := api.ClientOptions{
+	clientOptions := &api.ClientOptions{
 		BroadcastMode: "async", // default "block"
 		GasPrices:     &gasPrice,
 	}
@@ -31,9 +30,8 @@ YOUR KEY DETAIL
 		nodeURL,
 		armor,
 		passphrase,
-		importAccountName,
 		chainID,
-		&clientOptions,
+		clientOptions,
 	)
 	if err != nil {
 		fmt.Println(err)

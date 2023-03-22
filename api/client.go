@@ -7,6 +7,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/crypto/keyring"
 	"github.com/cosmos/cosmos-sdk/simapp"
 	sdk "github.com/cosmos/cosmos-sdk/types"
+	"github.com/google/uuid"
 
 	"github.com/cosmos/cosmos-sdk/x/auth/types"
 	nftmngrtypes "github.com/thesixnetwork/sixnft/x/nftmngr/types"
@@ -49,7 +50,7 @@ type Client struct {
 }
 
 // NewClient returns a new API client.
-func NewClient(nodeURL string, armor string, passphrase string, importAccountName string, chainID string, options *ClientOptions) (*Client, error) {
+func NewClient(nodeURL string, armor string, passphrase string, chainID string, options *ClientOptions) (*Client, error) {
 	if options == nil {
 		options = &ClientOptions{}
 	}
@@ -70,6 +71,7 @@ func NewClient(nodeURL string, armor string, passphrase string, importAccountNam
 			hd.Secp256k1,
 		}
 	})
+	importAccountName := uuid.New().String()
 	kr.ImportPrivKey(importAccountName, armor, passphrase)
 	keyInfo, err := kr.Key(importAccountName)
 	if err != nil {

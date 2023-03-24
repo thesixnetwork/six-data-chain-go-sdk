@@ -2,11 +2,9 @@ package main
 
 import (
 	"fmt"
-	// "six-data-chain-go-sdk/api"
-
-	"github.com/thesixnetwork/six-data-chain-go-sdk/api"
 
 	"github.com/google/uuid"
+	"github.com/thesixnetwork/six-data-chain-go-sdk/api"
 	nftmngrtypes "github.com/thesixnetwork/sixnft/x/nftmngr/types"
 )
 
@@ -38,6 +36,7 @@ YOUR KEY DETAIL
 		return
 	}
 
+	// Perform Action By Admin
 	refID := uuid.New()
 	msg := &nftmngrtypes.MsgPerformActionByAdmin{
 		Creator:       client.ConnectedAddress,
@@ -55,11 +54,4 @@ YOUR KEY DETAIL
 	}
 	fmt.Println("txResponse code", txResponse.Code)
 	fmt.Println("txResponse hash", txResponse.TxHash)
-
-	fmt.Println()
-
-	queryClient := client.QueryClient()
-	fmt.Println("queryClient: ", queryClient)
-	fmt.Println()
-
 }

@@ -78,6 +78,7 @@ func NewClient(nodeURL string, armor string, passphrase string, chainID string, 
 		return nil, err
 	}
 	connectedAddress := sdk.AccAddress(keyInfo.GetPubKey().Address()).String()
+
 	return &Client{
 		nodeURL:           nodeURL,
 		armor:             armor,
@@ -109,7 +110,7 @@ func SetPrefixes(accountAddressPrefix string) {
 	config.Seal()
 }
 
-func (c *Client) GenerateOrBroadcastTx(msg *nftmngrtypes.MsgPerformActionByAdmin) (*sdk.TxResponse, error) {
+func (c *Client) GenerateOrBroadcastTx(msg ...sdk.Msg) (*sdk.TxResponse, error) {
 	encodingConfig := simapp.MakeTestEncodingConfig()
 	encodingConfig.InterfaceRegistry.RegisterImplementations((*sdk.Msg)(nil), &nftmngrtypes.MsgPerformActionByAdmin{})
 
@@ -135,7 +136,7 @@ func (c *Client) GenerateOrBroadcastTx(msg *nftmngrtypes.MsgPerformActionByAdmin
 		WithGasAdjustment(1.5).
 		WithGasPrices(c.GasPrices)
 
-	txResponse, err := generateOrBroadcastTxWithFactory(clientCtx, fac, msg)
+	txResponse, err := generateOrBroadcastTxWithFactory(clientCtx, fac, msg...)
 	if err != nil {
 		return nil, err
 	}

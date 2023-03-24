@@ -113,5 +113,3 @@ require (
 replace github.com/gogo/protobuf v1.3.3 => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
 
 replace github.com/thesixnetwork/sixnft v0.8.0 => /Users/cx/workspace/go/src/github.com/thesixnetwork/sixnft
-
-replace github.com/thesixnetwork/six-data-chain-go-sdk => /Users/cx/workspace/go/src/github.com/thesixnetwork/six-data-chain-go-sdk

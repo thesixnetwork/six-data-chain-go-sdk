@@ -1,4 +1,4 @@
-module github.com/thesixnetwork/six-data-chain-go-sdk
+module github.com/thesixnetwork/six-protocol-go-sdk
 
 go 1.18
 

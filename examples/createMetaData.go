@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	"github.com/thesixnetwork/six-data-chain-go-sdk/api"
+	"github.com/thesixnetwork/six-protocol-go-sdk/api"
 	nftmngrtypes "github.com/thesixnetwork/sixnft/x/nftmngr/types"
 )
 
